@@ -56,14 +56,14 @@ session_start();
                                     while($row=mysqli_fetch_array($hand)){
                                     ?>
                                         <tr>
-                                            <td><?=$row['id']?></td>
+                                            <td><?=$row['id_member']?></td>
                                             <td><?=$row['username']?></td>
                                             <td><?=$row['name']?></td>
                                             <td><?=$row['email']?></td>
                                             <td><?=$row['telephone']?></td>
                                             <td><?=$row['user_type']?></td>
-                                            <td><a href="insert_edit.php?id=<?=$row['id']?>" class="btn btn-success">แก้ไข</a></td>
-                                            <td><a href="delete_user.php?id=<?=$row['id']?>" class="btn btn-danger">ลบ</a></td>
+                                            <td><a href="insert_edit.php?id=<?=$row['id_member']?>" class="btn btn-success">แก้ไข</a></td>
+                                            <td><a href="delete_user.php?id=<?=$row['id_member']?>" class="btn btn-danger">ลบ</a></td>
                                         </tr>
                                         <?php
                                         }

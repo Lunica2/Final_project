@@ -33,10 +33,6 @@ for($i=0;$i <=(int)$_SESSION["intLine"]; $i++){
         where id_pro='" . $_SESSION["strProductID"][$i] ."' ";
         mysqli_query($conn,$sql6);
 
-        $sql7 = "update sell set id_member='$cusID'
-        where id_pro='" . $_SESSION["strProductID"][$i] ."' ";
-        mysqli_query($conn,$sql7);
-
         $sql2="insert into order_detail(item_amount,total,id_pro,id_order)
         values('".$_SESSION["strQty"][$i] ."','$total','" . $_SESSION["strProductID"][$i] ."','$orderID')";
         if(mysqli_query($conn,$sql2)){

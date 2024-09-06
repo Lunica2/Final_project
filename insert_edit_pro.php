@@ -15,7 +15,7 @@ name='$uname',
 email='$email',
 address='$address',
 telephone='$tel'
-WHERE id='$id'";
+WHERE id_member='$id'";
 
 $result=mysqli_query($conn,$sql);
 if($result){

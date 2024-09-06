@@ -88,10 +88,10 @@ $add_date= date('Y/m/d', strtotime($ddt2 . "+1 days"));
 
 if(($ddt1 != "") & ($ddt2 != "")){
     echo "ค้นหาจากวันที่ $ddt1 ถึง $ddt2 " ;
-    $sql = "select * from pre_order po,user_form u where u.id=po.id_member and pre_status='1' or pre_status='3' and time_pre BETWEEN '$ddt1' and '$add_date'
+    $sql = "select * from pre_order po,user_form u where u.id_member=po.id_member and pre_status='1' or pre_status='3' and time_pre BETWEEN '$ddt1' and '$add_date'
     GROUP BY id_pre order by time_pre DESC";
 }else{
-    $sql = "select * from pre_order po,user_form u where u.id=po.id_member and pre_status='1' or pre_status='3' GROUP BY id_pre order by time_pre DESC";
+    $sql = "select * from pre_order po,user_form u where u.id_member=po.id_member and pre_status='1' or pre_status='3' GROUP BY id_pre order by time_pre DESC";
 }
 
 $result=mysqli_query($conn,$sql);

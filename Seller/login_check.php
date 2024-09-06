@@ -12,7 +12,7 @@ $row=mysqli_fetch_array($result);
 if($row > 0){
     $_SESSION["se_username"]=$row['username'];
     $_SESSION["se_password"]=$row['password'];
-    $_SESSION["se_id"]=$row['id'];
+    $_SESSION["se_id"]=$row['id_member'];
     $_SESSION["se_name"]=$row['name'];
     $_SESSION["Seller"]=$row['user_type'];
     $_SESSION["se_address"]=$row['address'];

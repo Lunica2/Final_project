@@ -7,7 +7,7 @@ if(!isset($_SESSION["se_username"]))
 header("location:login.php");
 
 $ID=$_GET['id'];
-$sql1="SELECT * FROM user_form WHERE id='$ID' ";
+$sql1="SELECT * FROM user_form WHERE id_member='$ID' ";
 $hand=mysqli_query($conn,$sql1);
 $row1=mysqli_fetch_array($hand);
 ?>
@@ -46,16 +46,6 @@ body{
         <input type="text" name="email" class="form-control" readonly value=<?=$row1['email']?>>
         <label class="mt-1">Tel.</label>
         <input name="tel" class="form-control" value=<?=$row1['telephone']?> > <br>
-        <label>Bank: </label>
-                    <select name="bank">
-        <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
-        <option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</option>
-        <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
-        </select>
-        <br> <br>
-        <label>เลขที่บัญชี : </label>
-                    <input name="bank_number" class="form-control" value=<?=$row1['bank_number']?> > <br>
-<br>
 
         <button type="submit" class="btn btn-primary">Submit</button>
         <a class="btn btn-danger" href="index.php" role="button">Cancel</a>

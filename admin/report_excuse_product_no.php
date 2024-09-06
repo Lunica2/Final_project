@@ -76,7 +76,7 @@ header("location:login.php");
                                     </tfoot>
                                     <tbody>
 <?php
-$sql = "select * from product p,user_form u where p.id_user=u.id and status_pro='0' order by id_pro DESC";
+$sql = "select * from product p,user_form u where p.id_user=u.id_member and status_pro='0' order by id_pro DESC";
 $result=mysqli_query($conn,$sql);
 while($row=mysqli_fetch_array($result)){
 $status = $row['status_pro'];

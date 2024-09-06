@@ -30,7 +30,7 @@ session_start();
             $_SESSION['Error'] ="";
         ?>
         <input type="submit" name="submit" value="login now" class="form-btn"> 
-       <!--  <p>don't have an account? <a href="otp_ver.php">register now</a></p>-->
+      <!--  <p>don't have an account? <a href="otp_ver.php">register now</a></p>-->
         <p>don't have an account? <a href="register.php">register now</a></p> 
     </form>
 </div>

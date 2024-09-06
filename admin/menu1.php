@@ -82,12 +82,24 @@ if(isset($_SESSION["ad_name"])){
                                     </div>
 
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        จัดการข้อเสนอ
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="report_offer.php">รายการข้อเสนอ</a>
+                                        <a class="nav-link" href="report_offer_yes.php">รายงานชำระเงินข้อเสนอ</a>
+                                        </nav>
+                                    </div>
+
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
                                         จัดการผู้ใช้งาน
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="edit_user.php">ผู้ใช้งาน</a>
+                                        <a class="nav-link" href="editpay_ment.php">ช่องทางชำระเงิน</a>
                                         </nav>
                                     </div>
                                     

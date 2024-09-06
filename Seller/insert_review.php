@@ -5,7 +5,7 @@ session_start();
 ?>
 <?php
 $ID=$_GET['id'];
-$sql1="SELECT * FROM review_table rt,product p,user_form u WHERE rt.user_id=u.id and rt.id_pro=p.id_pro and review_id='$ID' ";
+$sql1="SELECT * FROM review_table rt,product p,user_form u WHERE rt.user_id=u.id_member and rt.id_pro=p.id_pro and review_id='$ID' ";
 $hand=mysqli_query($conn,$sql1);
 $row1=mysqli_fetch_array($hand);
 ?>

@@ -81,5 +81,17 @@ if($result){
  }, 1000);
 </script>';
 }
+// รับค่าช่องทางการชำระเงินที่ถูกเลือก
+$payment_method_id = $_POST['payment_method'];
+
+// คุณสามารถบันทึกข้อมูลการสั่งซื้อพร้อมกับช่องทางการชำระเงินที่เลือกไว้ในฐานข้อมูลได้ตามที่ต้องการ
+$sql = "UPDATE payment_pre SET payment_method_id='$payment_method_id' WHERE id_pre='$orderID' ";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Order placed successfully!";
+    echo '<script> window.location = "payment_pre.php"; </script>';
+} else {
+    echo "Error: " . $sql . "<br>" . $conn->error;
+}
 mysqli_close($conn);
 ?>

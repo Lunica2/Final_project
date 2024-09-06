@@ -30,14 +30,6 @@ $total_price=$rs['total_price'];
                 ที่อยู่การจัดส่ง : <?=$rs['address'];?><br>
                 เบอร์โทรศัพท์ : <?=$rs['telephone'];?><br>
                 เลขไปรษณีย์ : <?=$rs['zipcode'];?><br>
-                --------------------------------------------------------------------------------------------------------------------------
-                <?php
-                $sql2="select * from product p ,user_form uf where p.id_user=uf.id";
-                $result2 = mysqli_query($conn,$sql2);
-                $rs2=mysqli_fetch_array($result2);
-                ?>
-                ชำระเงินได้ที่ : <?=$rs2['bank'];?><br>
-                เลขที่บัญชี : <?=$rs2['bank_number'];?><br>
                 <div class="card mb-4 mt-4">
                     <div class="card-body">
 <table class="table table-hover">
@@ -52,7 +44,7 @@ $total_price=$rs['total_price'];
   </thead>
   <tbody>
     <?php
-    $sql1="select * from order_detail d,product p ,user_form uf where d.id_pro=p.id_pro and p.id_user=uf.id and d.id_order= '" . $_SESSION["order_id"] . "' ";
+    $sql1="select * from order_detail d,product p ,user_form uf where d.id_pro=p.id_pro and p.id_user=uf.id_member and d.id_order= '" . $_SESSION["order_id"] . "' ";
     $result1 = mysqli_query($conn,$sql1);
     while($row=mysqli_fetch_array($result1)){
     ?>

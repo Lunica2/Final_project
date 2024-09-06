@@ -26,13 +26,13 @@ body{
     <?php
 $keytype = @$_POST['key_type'];
 if(isset($_POST['button1'])){
-  $sql = "SELECT * FROM product p,type t ,user_form u WHERE p.id_type=t.id_type and p.id_user=u.id and u.username='$name' and p.id_type= '$keytype' and status_pro=1 ORDER BY id_pro";
+  $sql = "SELECT * FROM product p,type t ,user_form u WHERE p.id_type=t.id_type and p.id_user=u.id_member and u.username='$name' and p.id_type= '$keytype' and status_pro=1 ORDER BY id_pro";
 
 }else if(isset($_POST['button2'])){
-  $sql = "SELECT * FROM product p,type t ,user_form u WHERE p.id_type=t.id_type and p.id_user=u.id and u.username='$name' and status_pro=1 ORDER BY id_pro";
+  $sql = "SELECT * FROM product p,type t ,user_form u WHERE p.id_type=t.id_type and p.id_user=u.id_member  and u.username='$name' and status_pro=1 ORDER BY id_pro";
 
 }else{
-  $sql = "SELECT * FROM product p,type t ,user_form u WHERE p.id_type=t.id_type and p.id_user=u.id and u.username='$name' and status_pro=1 ORDER BY id_pro";
+  $sql = "SELECT * FROM product p,type t ,user_form u WHERE p.id_type=t.id_type and p.id_user=u.id_member  and u.username='$name' and status_pro=1 ORDER BY id_pro";
 }
 //$sql = "SELECT * FROM product WHERE amount > 0 ORDER BY id_pro";  
 

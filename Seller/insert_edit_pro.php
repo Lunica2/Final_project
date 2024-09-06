@@ -6,18 +6,14 @@ $username=$_POST['username'];
 $uname=$_POST['uname'];
 $email=$_POST['email'];
 $tel=$_POST['tel'];
-$Bank=$_POST['bank'];
-$Bank_number=$_POST['bank_number'];
 
 //แก้ไขข้อมูล
 $sql="UPDATE user_form SET
 username='$username',
 name='$uname',
 email='$email',
-telephone='$tel',
-bank='$Bank',
-bank_number='$Bank_number'
-WHERE id='$id'";
+telephone='$tel'
+WHERE id_member='$id'";
 
 $result=mysqli_query($conn,$sql);
 if($result){

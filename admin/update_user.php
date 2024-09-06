@@ -8,8 +8,7 @@ $email=$_POST['email'];
 $address=$_POST['address'];
 $tel=$_POST['tel'];
 $type=$_POST['user_type'];
-$Bank=$_POST['bank'];
-$Bank_number=$_POST['bank_number'];
+
 
 //แก้ไขข้อมูล
 $sql="UPDATE user_form SET
@@ -18,10 +17,8 @@ name='$uname',
 email='$email',
 address='$address',
 telephone='$tel',
-user_type='$type',
-bank='$Bank',
-bank_number='$Bank_number'
-WHERE id='$id' ";
+user_type='$type'
+WHERE id_member='$id' ";
 
 $result=mysqli_query($conn,$sql);
 if($result){

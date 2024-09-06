@@ -5,7 +5,7 @@ session_start();
 ?>
 <?php
 $ID=$_GET['id'];
-$sql1="SELECT * FROM user_form WHERE id='$ID' ";
+$sql1="SELECT * FROM user_form WHERE id_member='$ID' ";
 $hand=mysqli_query($conn,$sql1);
 $row1=mysqli_fetch_array($hand);
 $Utype_id=$row1['user_type'];
@@ -46,7 +46,7 @@ $Utype_id=$row1['user_type'];
                             <div class="card-body">
                             <form name="form1" method="post" action="update_user.php" enctype="multipart/form-data">
                     <label>ID: </label>
-                    <input type="text" name="uid" class="form-control" readonly value=<?=$row1['id']?>> <br>
+                    <input type="text" name="uid" class="form-control" readonly value=<?=$row1['id_member']?>> <br>
                     <label>Username: </label>
                     <textarea name="username" class="form-control" ><?=$row1['username']?></textarea> <br>
                     <label>Name: </label>
@@ -60,17 +60,7 @@ $Utype_id=$row1['user_type'];
         <option value="Buyer">Buyer</option>
         <option value="Seller">Seller</option>
         </select>
-        <br> <br>
-        <label>Bank: </label>
-                    <select name="bank">
-        <option value="ธนาคารกรุงเทพ">ธนาคารกรุงเทพ</option>
-        <option value="ธนาคารกสิกรไทย">ธนาคารกสิกรไทย</option>
-        <option value="ธนาคารไทยพาณิชย์">ธนาคารไทยพาณิชย์</option>
-        </select>
-        <br> <br>
-        <label>เลขที่บัญชี : </label>
-                    <input name="bank_number" class="form-control" value=<?=$row1['bank_number']?> > <br>
-<br>
+        <br><br>
                     <button type="submit" class="btn btn-primary">Submit</button>
                     <a class="btn btn-danger" href="edit_user.php" role="button">Cancel</a>
                 </form>

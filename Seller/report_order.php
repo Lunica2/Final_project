@@ -32,7 +32,6 @@ header("location:login.php");
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 แสดงข้อมูลการสั่งซื้อสินค้า (ยังไม่ชำระเงิน)
-                                
                             <div>
                                 <br>
                             <a href="report_order.php" > <button type="button" class="btn btn-secondary">ยังไม่ชำระเงิน</button> </a>
@@ -90,10 +89,10 @@ $add_date= date('Y/m/d', strtotime($ddt2 . "+1 days"));
 
 if(($ddt1 != "") & ($ddt2 != "")){
     echo "ค้นหาจากวันที่ $ddt1 ถึง $ddt2 " ;
-    $sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id and t.order_id=od.id_order and od.id_pro=p.id_pro and id_user='$ids' order_status='1' or order_status='3' and reg_date BETWEEN '$ddt1' and '$add_date'
+    $sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id_member and t.order_id=od.id_order and od.id_pro=p.id_pro and u.id_member='$ids' t.order_status='1' or t.order_status='3' and reg_date BETWEEN '$ddt1' and '$add_date'
     group by t.order_id order by reg_date DESC";
 }else{
-    $sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id and t.order_id=od.id_order and od.id_pro=p.id_pro and id_user='$ids' and order_status='1' or order_status='3' group by t.order_id order by reg_date DESC";
+    $sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id_member and t.order_id=od.id_order and od.id_pro=p.id_pro and u.id_member='$ids' and t.order_status='1' or t.order_status='3' group by t.order_id order by reg_date DESC";
 }
 
 $hand=mysqli_query($conn,$sql);

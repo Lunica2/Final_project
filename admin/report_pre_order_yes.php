@@ -75,7 +75,7 @@ include 'config.php';
                                     </tfoot>
                                     <tbody>
 <?php
-$sql = "select * from pre_order_detail pd,product p ,pre_order po,user_form u where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id and pre_status='2' order by time_pre DESC";
+$sql = "select * from pre_order_detail pd,product p ,pre_order po,user_form u where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id_member and pre_status='2' order by time_pre DESC";
 $result=mysqli_query($conn,$sql);
 while($row=mysqli_fetch_array($result)){
 $status = $row['pre_status'];

@@ -80,7 +80,7 @@ header("location:login.php");
                                     </tfoot>
                                     <tbody>
 <?php
-$sql = "select * from pre_order po,user_form u ,pre_order_detail pod,product p where po.id_member=u.id and po.id_pre=pod.id_pre and pod.id_pro=p.id_pro and id_user='$ids' and pre_status='2' group by po.id_pre order by time_pre DESC";
+$sql = "select * from pre_order po,user_form u ,pre_order_detail pod,product p where po.id_member=u.id_member and po.id_pre=pod.id_pre and pod.id_pro=p.id_pro and id_user='$ids' and pre_status='2' group by po.id_pre order by time_pre DESC";
 $result=mysqli_query($conn,$sql);
 while($row=mysqli_fetch_array($result)){
 $status = $row['pre_status'];

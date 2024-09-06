@@ -32,6 +32,7 @@ if(isset($_SESSION["bu_id"])){
             <li><a class="dropdown-item" href="check_order.php">ตรวจสอบสถานะการสั่งซื้อ</a></li>
             <li><a class="dropdown-item" href="check_pre.php">ตรวจสอบสถานะการ Pre Order</a></li>
             <li><a class="dropdown-item" href="review.php">รีวิวสินค้าที่สั่งซื้อ</a></li>
+            <li><a class="dropdown-item" href="report_offer.php">รายการจัดข้อเสนอ</a></li>
           </ul>
         </li>
         <li class="nav-item">

@@ -51,7 +51,7 @@ if(isset($_SESSION["intLine"])){    //ถ้าไม่เป็นค่าว
 
 for($i=0;$i <=(int)$_SESSION["intLine"]; $i++){
     if(($_SESSION["strProductID"][$i]) != ""){
-$sql1="SELECT * FROM product p,user_form u WHERE p.id_user=u.id and id_pro = '".$_SESSION["strProductID"][$i] . "' " ;
+$sql1="SELECT * FROM product p,user_form u WHERE p.id_user=u.id_member and id_pro = '".$_SESSION["strProductID"][$i] . "' " ;
 $result1 = mysqli_query($conn,$sql1);
 $row_pro = mysqli_fetch_array($result1);
 

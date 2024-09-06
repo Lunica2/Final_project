@@ -2,7 +2,7 @@
 session_start();
 include 'config.php';
 $ids=$_GET['id'];
-$sql="select * from pre_order_detail pd,product p ,pre_order po,user_form u,address a where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id and u.id=a.id_member and po.id_pre='$ids' ";
+$sql="select * from pre_order_detail pd,product p ,pre_order po,user_form u,address a where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id_member and u.id_member=a.id_member and po.id_pre='$ids' ";
 $result = mysqli_query($conn,$sql);
 $rs=mysqli_fetch_array($result);
 $total_price=$rs['total_price_pre'];
@@ -26,19 +26,11 @@ $total_price=$rs['total_price_pre'];
             <br>
                 </div>
                 เลขที่การสั่งซื้อ : <?=$rs['id_pre'];?><br>
-                เลขที่สมาชิก : <?=$rs['id'];?><br>
+                เลขที่สมาชิก : <?=$rs['id_member'];?><br>
                 ชื่อ - นามสกุล (ผู้ซื้อ) : <?=$rs['name'];?><br>
                 ที่อยู่การจัดส่ง : <?=$rs['address'];?><br>
                 เบอร์โทรศัพท์ : <?=$rs['telephone'];?><br>
                 เลขไปรษณีย์ : <?=$rs['zipcode'];?><br>
-                ------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-                <?php
-                $sql2="select * from product p ,user_form uf where p.id_user=uf.id";
-                $result2 = mysqli_query($conn,$sql2);
-                $rs2=mysqli_fetch_array($result2);
-                ?>
-                ชำระเงินได้ที่ : <?=$rs2['bank'];?><br>
-                เลขที่บัญชี : <?=$rs2['bank_number'];?><br>
                 <div class="card mb-4 mt-4">
                     <div class="card-body">
 <table class="table table-hover">
@@ -53,7 +45,7 @@ $total_price=$rs['total_price_pre'];
   </thead>
   <tbody>
     <?php
-    $sql1="select * from pre_order_detail pd,product p ,pre_order po,user_form u where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id and po.id_pre='$ids' ";
+    $sql1="select * from pre_order_detail pd,product p ,pre_order po,user_form u where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id_member and po.id_pre='$ids' ";
     $result1 = mysqli_query($conn,$sql1);
     while($row=mysqli_fetch_array($result1)){
     ?>

@@ -3,7 +3,7 @@ include 'config.php';
 session_start();
 
 $ids=$_GET['id'];
-$sql1 = "SELECT * FROM product p, user_form u WHERE p.id_user=u.id and p.id_pro = '$ids' ";
+$sql1 = "SELECT * FROM product p, user_form u WHERE p.id_user=u.id_member and p.id_pro = '$ids' ";
 
 $result1=mysqli_query($conn,$sql1);
 $row1=mysqli_fetch_array($result1);
@@ -76,7 +76,7 @@ $image_pro=$row1['photo_pro'];
                                     <tbody>
 <?php
 
-$sql = "SELECT * FROM product p, user_form u,type t WHERE p.id_user=u.id and p.id_type=t.id_type and p.id_pro='$ids' order by p.id_pro ";
+$sql = "SELECT * FROM product p, user_form u,type t WHERE p.id_user=u.id_member and p.id_type=t.id_type and p.id_pro='$ids' order by p.id_pro ";
 $result=mysqli_query($conn,$sql);
 while($row=mysqli_fetch_array($result)){
 $status = $row['status_pro'];
@@ -101,10 +101,7 @@ $status = $row['status_pro'];
                                             ?>
                                         </tr>
                                     
-                                    <?php
-                                    }
-                                    mysqli_close($conn);
-                                    ?>
+
                                     
                                 </table>
                             </div>
@@ -119,59 +116,19 @@ $status = $row['status_pro'];
                             <?php } ?>
                         </div>
                         <div>ตัวอย่างสินค้า</div>
-  <div class="viewer">
-        <img id="currentImage" width="250px" height="300" src="" alt="Image Viewer">
-    </div>
-    <div class="controls">
-        <button onclick="prevImage()">Previous</button>
-        <button onclick="nextImage()">Next</button>
-    </div>
-
-    <script>
-        let images = [];
-        let currentIndex = 0;
-
-        // Fetch images from the server
-        fetch('fetch_images.php?id=<?=$row1['id_pro']?>')
-            .then(response => response.json())
-            .then(data => {
-                images = data;
-                if (images.length > 0) {
-                    document.getElementById('currentImage').src = images[0];
-                }
-            });
-
-        function showImage(index) {
-            if (index >= 0 && index < images.length) {
-                document.getElementById('currentImage').src = images[index];
-                currentIndex = index;
-            }
-        }
-
-        function prevImage() {
-            if (currentIndex > 0) {
-                showImage(currentIndex - 1);
-            }
-        }
-
-        function nextImage() {
-            if (currentIndex < images.length - 1) {
-                showImage(currentIndex + 1);
-            }
-        }
-
-        // Zoom functionality
-        const img = document.getElementById('currentImage');
-        img.addEventListener('click', function() {
-            if (img.style.transform === 'scale(2)') {
-                img.style.transform = 'scale(1)';
-                img.style.cursor = 'zoom-in';
-            } else {
-                img.style.transform = 'scale(2)';
-                img.style.cursor = 'zoom-out';
-            }
-        });
-    </script>
+  <?php
+  $sql="SELECT * FROM product_images WHERE id_pro='$ids' ORDER BY id_photo";
+  $hand=mysqli_query($conn,$sql);
+  While($row1=mysqli_fetch_array($hand)){
+  ?>
+  <img src="../img/product_img/<?=$row1['file_name']?>" width="250px" height="300" class="mt-2 p-2 my-2 border">
+  <?php
+  }
+  ?>
+                                      <?php
+                                    }
+                                    mysqli_close($conn);
+                                    ?>
                     </div>
                 </main>
                 <?php

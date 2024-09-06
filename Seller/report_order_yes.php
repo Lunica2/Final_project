@@ -64,7 +64,7 @@ header("location:login.php");
                                     </tfoot>
                                     <tbody>
 <?php
-$sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id and t.order_id=od.id_order and od.id_pro=p.id_pro and id_user='$ids' and order_status='2' group by t.order_id order by reg_date DESC";
+$sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id_member and t.order_id=od.id_order and od.id_pro=p.id_pro and id_user='$ids' and order_status='2' group by t.order_id order by reg_date DESC";
 $result=mysqli_query($conn,$sql);
 while($row=mysqli_fetch_array($result)){
 $status = $row['order_status'];

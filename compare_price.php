@@ -18,7 +18,7 @@ if (isset($_POST['search'])) {
 // ดึงข้อมูลหนังสือและราคาจากฐานข้อมูลโดยใช้ Full Text Search
 $sql = "SELECT product.name_pro, user_form.username, product.id_pro AS name_pro, product.price_pro,id_pro
         FROM product
-        JOIN user_form ON product.id_user = user_form.id
+        JOIN user_form ON product.id_user = user_form.id_member
         WHERE MATCH(product.name_pro) AGAINST(? IN NATURAL LANGUAGE MODE)
         ORDER BY product.id_pro";
 
@@ -104,7 +104,7 @@ $conn->close();
             <input type="submit" value="ค้นหา">
         </form>
         <?php if (!empty($books)): ?>
-            <?php foreach ($books as $title => $stores): ?>
+            
                 <h2><?php echo htmlspecialchars($search_query); ?></h2>
                 <table>
                     <thead>
@@ -115,16 +115,18 @@ $conn->close();
                         </tr>
                     </thead>
                     <tbody>
+                    <?php foreach ($books as $title => $stores): ?>
                         <?php foreach ($stores as $store): ?>
                             <tr>
                                 <td><?php echo htmlspecialchars($store['store']); ?></td>
                                 <td><?php echo number_format($store['price'], 2); ?></td>
                                 <td><a class="btn btn-outline-success mt-2" href="detail_product.php?id=<?=$store['id']?>">รายละเอียด</a></td>
                             </tr>
+                            <?php endforeach; ?>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
-            <?php endforeach; ?>
+            
         <?php else: ?>
             <p>ไม่มีข้อมูลการเปรียบเทียบราคา</p>
         <?php endif; ?>

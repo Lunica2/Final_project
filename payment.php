@@ -14,7 +14,7 @@ $orderStatus="";
 if(isset($_POST['btn1'])){
     $key_word=$_POST['keyword'];
     if($key_word != ""){
-        $sql="SELECT * FROM tb_order WHERE order_id='$key_word' and id='$ids' ";
+        $sql="SELECT * FROM tb_order t,order_detail od ,product p WHERE t.order_id=od.id_order and od.id_pro=p.id_pro and order_id='$key_word' and id='$ids' ";
         unset($_SESSION['error']);
     }else{
         echo "<script>window.location='payment.php'; </script>";
@@ -31,6 +31,8 @@ if(isset($_POST['btn1'])){
     $cusname=$row['cus_name'];
     $total=$row['total_price'];
     $orderStatus=$row['order_status'];
+    $id_pro=$row['id_pro'];
+    $id_user=$row['id_user'];
 }
 }
 ?>
@@ -47,8 +49,8 @@ if(isset($_POST['btn1'])){
 <body>
     <div class="container mt-2">
 <?php include 'menu.php'; ?>
-        <div class="row mt-4">
-            <div class="col-md-4">
+        <div class="row mt-6">
+            <div class="col-md-6">
             <div class="alert alert-warning text-center" role="alert">
                 แจ้งชำระเงิน
                 </div>
@@ -80,12 +82,16 @@ if(isset($_POST['btn1'])){
                 </div>
             </div>
         </div>
+        <?php
+    error_reporting(0);
+    ini_set('display_errors', 0);
+?>
 
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
     <form action="insert_payment.php" method="POST" enctype="multipart/form-data">
     <label class="mt-4">เลขที่ใบสั่งซื้อ</label>
-    <input type="text" name="order_id" required value=<?=$order_id?>> <br>
+    <input type="text" name="order_id" required readonly value=<?=$order_id?>> <br>
     <?php
     $status="";
     if($orderStatus == '1'){
@@ -102,14 +108,36 @@ if(isset($_POST['btn1'])){
         echo "<div class='text-info'> ";
         echo "รอการตรวจสอบ";
         echo "</div>";
+    }elseif($orderStatus == '0'){
+        echo "<div class='text-danger'> ";
+        echo "สินค้าถูกยกเลิก";
+        echo "</div>";
     }
     ?>
-    <a class="btn btn-primary" href="check_order.php">การสั่งซื้อทั้งหมด</a> <br>
+    <label class="mt-4">ไอดีสินค้า</label>
+    <textarea name="cusname" class="form-control" readonly rows="1"><?=$id_pro?></textarea>
+    <?php
+    $sql = "SELECT * FROM payment_methods pm,product p WHERE pm.id_member=p.id_user and p.id_pro='$id_pro' and pm.id_member='$id_user'";
+    $result = $conn->query($sql);
+    ?>
+
     <label class="mt-4">ชื่อผู้ซื้อ</label>
     <textarea name="cusname" class="form-control" readonly rows="1"><?=$cusname?></textarea>
     
     <label class="mt-4">จำนวนเงิน</label>
-    <input type="number" name="total_price" class="form-control" readonly value=<?=$total?>>
+    <input type="number" name="total_price" class="form-control" readonly value=<?=$total?>> <br>
+
+        <h2>เลือกช่องทางการชำระเงิน</h2>
+        <?php if ($result->num_rows > 0): ?>
+            <?php while($row = $result->fetch_assoc()): ?>
+                <div>
+                    <input type="radio" id="payment_<?php echo $row['id_payment']; ?>" name="payment_method" value="<?php echo $row['id_payment']; ?>" required>
+                    <label for="payment_<?php echo $row['id_payment']; ?>"><?php echo $row['bank']; ?> <?php echo $row['bank_number']; ?></label>
+                </div>
+            <?php endwhile; ?>
+        <?php else: ?>
+            <p>No payment methods available.</p>
+        <?php endif; ?>
 
     <label class="mt-4">วันที่โอน</label>
     <input type="date" name="pay_date" class="form-control" required>

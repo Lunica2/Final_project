@@ -4,7 +4,7 @@ session_start();
 ?>
 <?php
 $ID=$_GET['id'];
-$sql1="DELETE FROM user_form WHERE id='$ID' ";
+$sql1="DELETE FROM user_form WHERE id_member='$ID' ";
 $hand=mysqli_query($conn,$sql1);
 $result=mysqli_query($conn,$sql1);
 if($result){

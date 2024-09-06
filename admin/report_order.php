@@ -125,7 +125,7 @@ $status = $row['order_status'];
                                             </td>
                                             <td><a href="report_order_detail.php?id=<?=$row['order_id']?>" class="btn btn-success">รายละเอียด</a></td>
                                             <td><a href="pay_order.php?id=<?=$row['order_id']?>" class="btn btn-warning">ปรับสถานะ</a></td>
-                                            <td><a href="cancel_order.php?id=<?=$row['order_id']?>?ia=<?=$row['item_amount']?>?ip=<?=$row['id_pro']?>" class="btn btn-danger">ยกเลิก</a></td>
+                                            <td><a href="cancel_order.php?id=<?=$row['order_id']?>" class="btn btn-danger">ยกเลิก</a></td>
                                         </tr>
                                     
                                     <?php

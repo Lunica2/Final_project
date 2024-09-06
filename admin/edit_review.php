@@ -52,7 +52,7 @@ session_start();
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql="SELECT * FROM review_table rt,product p,user_form u WHERE rt.user_id=u.id and rt.id_pro=p.id_pro order by review_id ";
+                                    $sql="SELECT * FROM review_table rt,product p,user_form u WHERE rt.user_id=u.id_member and rt.id_pro=p.id_pro order by review_id ";
                                     $hand=mysqli_query($conn,$sql);
                                     while($row=mysqli_fetch_array($hand)){
                                     ?>

@@ -61,7 +61,7 @@ session_start();
     <a href="index.php" class="btn btn-success">Back</a>
     <div class="row">
     <?php
-$sql = "SELECT * FROM sell s,product p,type t,user_form u WHERE s.id_pro=p.id_pro and p.id_type=t.id_type and p.id_user=u.id and status_pro=1 ORDER BY sell_amount DESC";
+$sql = "SELECT * FROM sell s,product p,type t,user_form u WHERE s.id_pro=p.id_pro and p.id_type=t.id_type and p.id_user=u.id_member and status_pro=1 ORDER BY sell_amount DESC";
 $result = mysqli_query($conn,$sql);
 while($row=mysqli_fetch_array($result)){
 $amount1=$row['amount'];

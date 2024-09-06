@@ -7,7 +7,7 @@ if(!isset($_SESSION["bu_username"]))
 header("location:login.php");
 
 $ID=$_GET['id'];
-$sql1="SELECT * FROM user_form WHERE id='$ID' ";
+$sql1="SELECT * FROM user_form WHERE id_member='$ID' ";
 $hand=mysqli_query($conn,$sql1);
 $row1=mysqli_fetch_array($hand);
 ?>
@@ -38,7 +38,7 @@ body{
             };
         };
         ?>
-        <input type="text" name="uid" class="form-control text-center" readonly value=<?=$row1['id']?>>
+        <input type="text" name="uid" class="form-control text-center" readonly value=<?=$row1['id_member']?>>
         <label class="mt-1">UserName</label>
         <input type="text" name="username" class="form-control" value=<?=$row1['username']?>>
         <label class="mt-1">Name</label>

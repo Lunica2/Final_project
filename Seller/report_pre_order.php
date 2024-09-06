@@ -90,10 +90,10 @@ $add_date= date('Y/m/d', strtotime($ddt2 . "+1 days"));
 
 if(($ddt1 != "") & ($ddt2 != "")){
     echo "ค้นหาจากวันที่ $ddt1 ถึง $ddt2 " ;
-    $sql = "select * from pre_order po,user_form u ,pre_order_detail pod,product p where po.id_member=u.id and po.id_pre=pod.id_pre and pod.id_pro=p.id_pro and id_user='$ids' and pre_status='1' or pre_status='3' and time_pre BETWEEN '$ddt1' and '$add_date'
+    $sql = "select * from pre_order po,user_form u ,pre_order_detail pod,product p where po.id_member=u.id_member and po.id_pre=pod.id_pre and pod.id_pro=p.id_pro and id_user='$ids' and pre_status='1' or pre_status='3' and time_pre BETWEEN '$ddt1' and '$add_date'
     group by po.id_pre order by reg_date DESC";
 }else{
-    $sql = "select * from pre_order po,user_form u ,pre_order_detail pod,product p where po.id_member=u.id and po.id_pre=pod.id_pre and pod.id_pro=p.id_pro and id_user='$ids' and pre_status='1' or pre_status='3' group by po.id_pre order by time_pre DESC";
+    $sql = "select * from pre_order po,user_form u ,pre_order_detail pod,product p where po.id_member=u.id_member and po.id_pre=pod.id_pre and pod.id_pro=p.id_pro and id_user='$ids' and pre_status='1' or pre_status='3' group by po.id_pre order by time_pre DESC";
 }
 
 $result=mysqli_query($conn,$sql);

@@ -29,7 +29,8 @@ if(isset($_SESSION["se_name"])){
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="editprofile.php?id=<?=$_SESSION["se_id"]?>">แก้ไขโปรไฟล์</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                        <li><a class="dropdown-item" href="editpay_ment.php?id=<?=$_SESSION["se_id"]?>">แก้ไขช่องทางชำระเงิน</a></li>
+                        <li><a class="dropdown-item" href="add_payment.php?id=<?=$_SESSION["se_id"]?>">เพิ่มช่องทางชำระเงิน</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>
@@ -80,6 +81,18 @@ if(isset($_SESSION["se_name"])){
                                             <a class="nav-link" href="report_excuse_product.php">ตรวจสอบการอนุญาตขายสินค้า</a>
                                         </nav>
                                     </div>
+
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        จัดการข้อเสนอ
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="report_offer.php">รายการข้อเสนอ</a>
+                                        <a class="nav-link" href="report_offer_yes.php">รายงานชำระเงินข้อเสนอ</a>
+                                        </nav>
+                                    </div>
+                                    
                                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapse" aria-expanded="false" aria-controls="pagesCollapse">
                                         จัดการการรีวิว
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

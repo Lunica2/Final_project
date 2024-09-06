@@ -3,7 +3,7 @@ include 'config.php';
 session_start();
 
 $ids=$_GET['id'];
-$sql1 = "select * from pre_order_detail pd,product p ,pre_order po,user_form u where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id and po.id_pre = '$ids' ";
+$sql1 = "select * from pre_order_detail pd,product p ,pre_order po,user_form u where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id_member and po.id_pre = '$ids' ";
 
 $result1=mysqli_query($conn,$sql1);
 $row1=mysqli_fetch_array($result1);
@@ -57,7 +57,7 @@ $image_bill=$row1['pay_image'];
                                     <tbody>
 <?php
 
-$sql = "select * from pre_order_detail pd,product p ,pre_order po,user_form u where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id and po.id_pre='$ids' order by po.id_pro ";
+$sql = "select * from pre_order_detail pd,product p ,pre_order po,user_form u where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id_member and po.id_pre='$ids' order by po.id_pro ";
 $result=mysqli_query($conn,$sql);
 $sum_total=0;
 while($row=mysqli_fetch_array($result)){

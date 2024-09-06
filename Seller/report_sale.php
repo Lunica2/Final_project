@@ -64,10 +64,10 @@ $add_date= date('Y/m/d', strtotime($ddt2 . "+1 days"));
 
 if(($ddt1 != "") & ($ddt2 != "")){
     echo "ค้นหาจากวันที่ $ddt1 ถึง $ddt2 " ;
-    $sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id and t.order_id=od.id_order and od.id_pro=p.id_pro and id_user='$ids' order_status='2' and reg_date BETWEEN '$ddt1' and '$add_date'
+    $sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id_member and t.order_id=od.id_order and od.id_pro=p.id_pro and id_user='$ids' order_status='2' and reg_date BETWEEN '$ddt1' and '$add_date'
     order by reg_date DESC";
 }else{
-    $sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id and t.order_id=od.id_order and od.id_pro=p.id_pro and id_user='$ids' and order_status='2' order by reg_date DESC";
+    $sql = "select * from tb_order t,user_form u ,order_detail od,product p where t.id=u.id_member and t.order_id=od.id_order and od.id_pro=p.id_pro and id_user='$ids' and order_status='2' order by reg_date DESC";
 }
 $total_sum=0;
 $result=mysqli_query($conn,$sql);

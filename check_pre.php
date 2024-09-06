@@ -33,7 +33,7 @@ header("location:login.php");
             <th>รายละเอียดการ Pre Order</th>
         </tr>
         <?php
-        $sql="SELECT * FROM pre_order po,user_form u WHERE po.id_member=u.id and id='" . $_SESSION["bu_id"] ."' ";
+        $sql="SELECT * FROM pre_order po,user_form u WHERE po.id_member=u.id_member and u.id_member='" . $_SESSION["bu_id"] ."' ";
         $hand=mysqli_query($conn,$sql);
         while($row=mysqli_fetch_array($hand)){
         $status=$row['pre_status'];

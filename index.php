@@ -23,7 +23,7 @@ body{
   <br>
   <div class="row">
     <?php
-$sql = "SELECT * FROM product p,type t ,user_form u WHERE p.id_type=t.id_type and p.id_user=u.id and status_pro=1 ORDER BY id_pro limit 8";
+$sql = "SELECT * FROM product p,type t ,user_form u WHERE p.id_type=t.id_type and p.id_user=u.id_member and status_pro=1 ORDER BY id_pro limit 8";
 $result = mysqli_query($conn,$sql);
 while($row=mysqli_fetch_array($result)){
 $amount1=$row['amount'];

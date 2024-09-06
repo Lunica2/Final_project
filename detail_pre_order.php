@@ -2,7 +2,7 @@
 session_start();
 include 'config.php';
 $ids=$_GET['id'];
-$sql="select * from pre_order po,user_form u where po.id_member=u.id and id_pre=$ids";
+$sql="select * from pre_order po,user_form u where po.id_member=u.id_member and id_pre=$ids";
 $result = mysqli_query($conn,$sql);
 $rs=mysqli_fetch_array($result);
 $total_price=$rs['total_price_pre'];
@@ -30,14 +30,6 @@ $total_price=$rs['total_price_pre'];
                 ชื่อ - นามสกุล (ผู้สั่ง) : <?=$rs['name'];?><br>
                 ที่อยู่การจัดส่ง : <?=$rs['address'];?><br>
                 เบอร์โทรศัพท์ : <?=$rs['telephone'];?><br>
-                --------------------------------------------------------------------------------------------------------------------------
-                <?php
-                $sql2="select * from product p ,user_form uf where p.id_user=uf.id";
-                $result2 = mysqli_query($conn,$sql2);
-                $rs2=mysqli_fetch_array($result2);
-                ?>
-                ชำระเงินได้ที่ : <?=$rs2['bank'];?><br>
-                เลขที่บัญชี : <?=$rs2['bank_number'];?><br>
                 <div class="card mb-4 mt-4">
                     <div class="card-body">
 <table class="table table-hover">

@@ -47,13 +47,13 @@ session_start();
                                     </tfoot>
                                     <tbody>
                                     <?php
-                                    $sql="SELECT * FROM rate rt,user_form u WHERE rt.id_member=u.id order by rate_id";
+                                    $sql="SELECT * FROM rate rt,user_form u WHERE rt.id_member=u.id_member order by rate_id";
                                     $hand=mysqli_query($conn,$sql);
                                     while($row=mysqli_fetch_array($hand)){
                                     ?>
                                         <tr>
                                             <td><?=$row['rate_id']?></td>
-                                            <td><?=$row['id']?></td>
+                                            <td><?=$row['id_member']?></td>
                                             <td><?=$row['name']?></td>
                                             <td><?=$row['rate_detail']?></td>
                                             <td><a href="delete_rate.php?id=<?=$row['rate_id']?>" class="btn btn-danger">ลบ</a></td>
