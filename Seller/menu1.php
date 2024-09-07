@@ -31,6 +31,7 @@ if(isset($_SESSION["se_name"])){
                         <li><a class="dropdown-item" href="editprofile.php?id=<?=$_SESSION["se_id"]?>">แก้ไขโปรไฟล์</a></li>
                         <li><a class="dropdown-item" href="editpay_ment.php?id=<?=$_SESSION["se_id"]?>">แก้ไขช่องทางชำระเงิน</a></li>
                         <li><a class="dropdown-item" href="add_payment.php?id=<?=$_SESSION["se_id"]?>">เพิ่มช่องทางชำระเงิน</a></li>
+                        <li><a class="dropdown-item" href="rateweb.php?id=<?=$_SESSION["se_id"]?>">ประเมินเว็ปไซต์</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="logout.php">Logout</a></li>
                     </ul>

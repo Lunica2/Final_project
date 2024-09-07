@@ -2,8 +2,6 @@
 @include 'config.php';
 
 session_start();
-if(!isset($_SESSION["bu_username"]))
-header("location:login.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
