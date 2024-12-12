@@ -29,10 +29,10 @@ $ids=$_SESSION["se_id"];
             };
         };
         ?> 
-        <input type="text" name="bank" required placeholder="ธนาคาร">
-        <input type="number" name="bank_number" required placeholder="เลขที่บัญชี">
+        <input type="text" name="bank" required placeholder="*ธนาคาร">
+        <input type="number" name="bank_number" required placeholder="*เลขที่บัญชี">
         <input type="submit" name="submit" value="เสร็จสิ้น" class="form-btn">
-        <a class="btn btn-danger" href="index.php" role="button">Cancel</a>
+        <a class="btn btn-danger" href="index.php" role="button">ยกเลิก</a>
     </form>
 </div>
 

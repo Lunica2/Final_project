@@ -17,7 +17,7 @@ $image_bill=$row1['pay_image'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>รายงานรายละเอียดคำสั่งซื้อ Pre Order</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -48,6 +48,7 @@ $image_bill=$row1['pay_image'];
                                         <tr>
                                             <th>รหัสสินค้า</th>
                                             <th>ชื่อสินค้า</th>
+                                            <th>รูปสินค้า</th>
                                             <th>ชื่อลูกค้า</th>
                                             <th>ราคา</th>
                                             <th>จำนวน</th>
@@ -57,7 +58,7 @@ $image_bill=$row1['pay_image'];
                                     <tbody>
 <?php
 
-$sql = "select * from pre_order_detail pd,product p ,pre_order po,user_form u where pd.id_pro=p.id_pro and pd.id_pre=po.id_pre and po.id_member=u.id_member and po.id_pre='$ids' order by po.id_pro ";
+$sql = "select * from pre_order_detail pd,pre_order po,product p,user_form u where pd.id_pre=po.id_pre and pd.id_pro=p.id_pro and p.id_user=u.id_member and pd.id_pre='$ids'";
 $result=mysqli_query($conn,$sql);
 $sum_total=0;
 while($row=mysqli_fetch_array($result)){
@@ -67,10 +68,11 @@ while($row=mysqli_fetch_array($result)){
                                         <tr>
                                             <td><?=$row['id_pro']?></td>
                                             <td><?=$row['name_pro']?></td>
+                                            <td><img src="../img/<?=$row['photo_pro']?>" width="100" height="100"></td>
                                             <td><?=$row['name']?></td>
-                                            <td><?=$row['price_pro']?></td>
-                                            <td><?=$row['item_amount']?></td>
-                                            <td><?=$row['total']?></td>
+                                            <td><?=$row['price_pro']?> บาท</td>
+                                            <td><?=$row['item_amount']?> เล่ม</td>
+                                            <td><?=$row['total']?> บาท</td>
                                         
                                         </tr>
                                     

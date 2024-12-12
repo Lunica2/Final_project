@@ -4,12 +4,15 @@ include 'config.php';
 $id=$_POST['uid'];
 $address=$_POST['address'];
 $zipcode=$_POST['zipcode'];
-
+$name=$_POST['name'];
+$tel=$_POST['tel'];
 
 //แก้ไขข้อมูล
 $sql="UPDATE address SET
-address='$address',
-zipcode='$zipcode'
+ad_name='$name',
+ad_address='$address',
+ad_zipcode='$zipcode',
+telephone_ad='$tel'
 WHERE id_address='$id'";
 
 $result=mysqli_query($conn,$sql);

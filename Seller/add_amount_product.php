@@ -62,8 +62,8 @@ $ids=$_SESSION["se_id"];
                                             <td><?=$row['name_pro']?></td>
                                             <td><?=$row['detail_pro']?></td>
                                             <td><?=$row['name_type']?></td>
-                                            <td><?=$row['price_pro']?></td>
-                                            <td><?=$row['amount']?></td>
+                                            <td><?=$row['price_pro']?> บาท</td>
+                                            <td><?=$row['amount']?> เล่ม</td>
                                             <td><a href="addstock.php?id=<?=$row['id_pro']?>" class="btn btn-success">เพิ่ม</a></td>
                                         </tr>
                                         <?php

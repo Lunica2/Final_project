@@ -11,7 +11,7 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>My Shop</title>
+        <title>รายการสินค้า</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -63,8 +63,8 @@ session_start();
                                             <td><?=$row['name_pro']?></td>
                                             <td><?=$row['detail_pro']?></td>
                                             <td><?=$row['name_type']?></td>
-                                            <td><?=$row['price_pro']?></td>
-                                            <td><?=$row['amount']?></td>
+                                            <td><?=$row['price_pro']?> บาท</td>
+                                            <td><?=$row['amount']?> เล่ม</td>
                                             <td><a href="edit_product.php?id=<?=$row['id_pro']?>" class="btn btn-success">แก้ไข</a></td>
                                             <td><a href="delete_product.php?id=<?=$row['id_pro']?>" class="btn btn-danger">ลบ</a></td>
                                         </tr>

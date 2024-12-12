@@ -18,7 +18,7 @@ $row1=mysqli_fetch_array($hand);
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>แก้ไขข้อมูลที่อยู่</title>
         <link rel="stylesheet" href="style/style_register.css">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
@@ -36,7 +36,7 @@ $row1=mysqli_fetch_array($hand);
 
                         <div class="card mb-4 mt-4">
                             <div class="card-header">
-                                แก้ไขข้อมูล
+                                แก้ไขข้อมูลที่อยู่
                                  <br>
                             <div>
 
@@ -44,14 +44,18 @@ $row1=mysqli_fetch_array($hand);
                             
                             <div class="card-body">
                             <form name="form1" method="post" action="update_address.php" enctype="multipart/form-data">
-                    <label>ID: </label>
-                    <input type="text" name="uid" class="form-control" readonly value=<?=$ID?>> <br>
+                    <label hidden>ID: </label>
+                    <input hidden type="text" name="uid" class="form-control" readonly value=<?=$ID?>> <br>
+                    <label>ชื่อ: </label>
+                    <textarea name="name" class="form-control" ><?=$row1['ad_name']?></textarea> <br>
                     <label>ที่อยู่: </label>
-                    <textarea name="address" class="form-control" ><?=$row1['address']?></textarea> <br>
+                    <textarea name="address" class="form-control" ><?=$row1['ad_address']?></textarea> <br>
                     <label>รหัสไปรษณีย์: </label>
-                    <textarea name="zipcode" class="form-control" ><?=$row1['zipcode']?></textarea> <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a class="btn btn-danger" href="editaddress.php" role="button">Cancel</a>
+                    <textarea name="zipcode" class="form-control" ><?=$row1['ad_zipcode']?></textarea> <br>
+                    <label>เบอร์โทรศัพท์: </label>
+                    <textarea name="tel" class="form-control" ><?=$row1['telephone_ad']?></textarea> <br>
+                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                    <a class="btn btn-danger" href="editaddress.php" role="button">ยกเลิก</a>
                 </form>
                             </div>
                         </div>

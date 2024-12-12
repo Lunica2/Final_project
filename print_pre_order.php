@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'config.php';
-$sql="select * from pre_order p,tb_order t where p.id_member=t.id and id_pre= '" . $_SESSION["id_pre"] . "' ";
+$sql="select * from pre_order p,address a where p.id_member=a.id_member and id_pre= '" . $_SESSION["id_pre"] . "' ";
 $result = mysqli_query($conn,$sql);
 $rs=mysqli_fetch_array($result);
 $total_price=$rs['total_price_pre'];
@@ -24,11 +24,11 @@ $total_price=$rs['total_price_pre'];
             การPre Orderเสร็จสิ้น
             <br>
                 </div>
-                เลขที่การ Pre Order : <?=$rs['id_pre'];?><br>
-                เลขที่สมาชิก : <?=$rs['id_member'];?><br>
-                ชื่อ - นามสกุล : <?=$rs['cus_name'];?><br>
-                ที่อยู่การจัดส่ง : <?=$rs['address'];?><br>
-                เบอร์โทรศัพท์ : <?=$rs['telephone'];?><br>
+                <p><strong>เลขที่การสั่งซื้อ:</strong> <?=$rs['id_pre'];?></p>
+                        <p><strong>ชื่อ - นามสกุล (ผู้รับ):</strong><?=$rs['pre_name'];?></p>
+                        <p><strong>ที่อยู่การจัดส่ง:</strong> <?=$rs['address'];?></p>
+                        <p><strong>เบอร์โทรศัพท์:</strong> <?=$rs['pre_tel'];?></p>
+                        <p><strong>เลขไปรษณีย์:</strong> <?=$rs['pre_zip'];?></p>
                 <div class="card mb-4 mt-4">
                     <div class="card-body">
 <table class="table table-hover">
@@ -50,9 +50,9 @@ $total_price=$rs['total_price_pre'];
     <tr>
       <td><?=$row['id_pro']?></td>
       <td><?=$row['name_pro']?></td>
-      <td><?=$row['price_pro']?></td>
-      <td><?=$row['item_amount']?></td>
-      <td><?=$row['total']?></td>
+      <td><?=$row['price_pro']?> บาท</td>
+      <td><?=$row['item_amount']?> เล่ม</td>
+      <td><?=$row['total']?> บาท</td>
     </tr>
   </tbody>
   <?php
@@ -71,7 +71,7 @@ $total_price=$rs['total_price_pre'];
 <div class="text-center">
 <a href="buyer.php" class="btn btn-success">Back</a>
 <button onclick="window.print()" class="btn btn-success">Print</button>
-<a href="payment_pre.php" class="btn btn-success">ชำระเงิน</a>
+<a href="report_pre_order.php" class="btn btn-success">ชำระเงิน</a>
 </div>
             </div>
         </div>

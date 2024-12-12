@@ -17,7 +17,7 @@ $image_bill=$row1['pay_image'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>รายงานรายละเอียดคำสั่งซื้อ</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -30,9 +30,8 @@ $image_bill=$row1['pay_image'];
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        
-
-                        <div class="card mb-4 mt-4">
+                    
+                        <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 แสดงรายการสินค้า
@@ -49,6 +48,7 @@ $image_bill=$row1['pay_image'];
                                     <thead>
                                         <tr>
                                             <th>รหัสสินค้า</th>
+                                            <th>รูปสินค้า</th>
                                             <th>ชื่อสินค้า</th>
                                             <th>ราคา</th>
                                             <th>จำนวน</th>
@@ -56,29 +56,26 @@ $image_bill=$row1['pay_image'];
                                         </tr>
                                     </thead>
                                     <tbody>
-<?php
-
+                                    <?php
 $sql = "select * from order_detail d , product p, tb_order t where d.id_order=t.order_id
 and d.id_pro=p.id_pro and d.id_order='$ids' order by d.id_pro ";
 $result=mysqli_query($conn,$sql);
 $sum_total=0;
 while($row=mysqli_fetch_array($result)){
-    $sum_total=$row['total_price'];
+    $sum_total += $row['total'];
 ?>
-                                    
-                                        <tr>
-                                            <td><?=$row['id_pro']?></td>
-                                            <td><?=$row['name_pro']?></td>
-                                            <td><?=$row['price_pro']?></td>
-                                            <td><?=$row['item_amount']?></td>
-                                            <td><?=$row['total']?></td>
-                                        
-                                        </tr>
-                                    
-                                    <?php
-                                    }
-                                    mysqli_close($conn);
-                                    ?>
+    <tr>
+        <td><?=$row['id_pro']?></td>
+        <td><img src="../img/<?=$row['photo_pro']?>" width="100" height="100"></td>
+        <td><?=$row['name_pro']?></td>
+        <td><?=$row['price_pro']?> บาท</td>
+        <td><?=$row['item_amount']?> เล่ม</td>
+        <td><?=$row['total']?> บาท</td>
+    </tr>
+<?php
+}
+mysqli_close($conn);
+?>
                                     
                                 </table>
                                 <b>ราคารวมสุทธิ <?=number_format($sum_total,2)?> บาท</b>

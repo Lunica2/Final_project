@@ -9,7 +9,6 @@ $price=$_POST['price'];
 $amount=$_POST['amount'];
 $img=$_POST['txtimg'];
 
-//อัปรูป
 if (is_uploaded_file($_FILES['file1']['tmp_name'])) {
     $new_image_name = 'pro_'.uniqid().".".pathinfo(basename($_FILES['file1']['name']), PATHINFO_EXTENSION);
     $image_upload_path = "../img/".$new_image_name;
@@ -18,7 +17,6 @@ if (is_uploaded_file($_FILES['file1']['tmp_name'])) {
     $new_image_name = "$img";
     }
 
-//แก้ไขข้อมูล
 $sql="UPDATE product SET
 name_pro='$proname',
 detail_pro='$detail',

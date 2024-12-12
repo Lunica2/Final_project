@@ -1,12 +1,10 @@
 <?php
-// เชื่อมต่อกับฐานข้อมูล
 @include 'config.php';
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// ดึงข้อมูลช่องทางการชำระเงิน
 $sql = "SELECT * FROM payment_methods";
 $result = $conn->query($sql);
 ?>

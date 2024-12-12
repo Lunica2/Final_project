@@ -81,14 +81,12 @@ if($result){
  }, 1000);
 </script>';
 }
-// รับค่าช่องทางการชำระเงินที่ถูกเลือก
+
 $payment_method_id = $_POST['payment_method'];
 
-// คุณสามารถบันทึกข้อมูลการสั่งซื้อพร้อมกับช่องทางการชำระเงินที่เลือกไว้ในฐานข้อมูลได้ตามที่ต้องการ
 $sql = "UPDATE payment_offer SET payment_method_id='$payment_method_id' WHERE id_payment_offer='$orderID' ";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Order placed successfully!";
     '<script> window.location = "report_offer.php"; </script>';
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;

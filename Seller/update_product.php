@@ -9,7 +9,6 @@ $price=$_POST['price'];
 $amount=$_POST['amount'];
 $img=$_POST['txtimg'];
 
-//อัปรูป
 if (is_uploaded_file($_FILES['file1']['tmp_name'])) {
     $new_image_name = 'pro_'.uniqid().".".pathinfo(basename($_FILES['file1']['name']), PATHINFO_EXTENSION);
     $image_upload_path = "../img/".$new_image_name;
@@ -18,13 +17,13 @@ if (is_uploaded_file($_FILES['file1']['tmp_name'])) {
     $new_image_name = "$img";
     }
 
-//แก้ไขข้อมูล
 $sql="UPDATE product SET
 name_pro='$proname',
 detail_pro='$detail',
 id_type='$typeid',
 price_pro='$price',
 amount='$amount',
+status_pro='2',
 photo_pro='$new_image_name'
 WHERE id_pro='$proid' ";
 
@@ -37,7 +36,7 @@ if($result){
     echo '<script>
     setTimeout(function() {
      swal({
-         title: "เสร็จสิ้น",
+         title: "การแก้ไขเสร็จสิ้น โปรดรอการตรวจสอบจากผู้ดูแลระบบ",
          type: "success"
      }, function() {
          window.location = "stock_product.php"; //หน้าที่ต้องการให้กระโดดไป

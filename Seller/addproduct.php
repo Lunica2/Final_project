@@ -32,7 +32,7 @@ $ids=$_SESSION["se_id"];
                             </div>
                             <div class="card-body">
                             <form name="form1" method="post" action="insert_product.php" enctype="multipart/form-data">
-                    <label>ชื่อสินค้า: </label>
+                    <label>*ชื่อสินค้า: </label>
                     <input type="text" name="pname" class="form-control" placeholder="ชื่อสินค้า..." required> <br>
                     <label>ประเภทสินค้า: </label>
                     <select class="form-select" name="typeID">
@@ -47,19 +47,19 @@ $ids=$_SESSION["se_id"];
                         mysqli_close($conn);
                         ?>
                     </select><br>
-                    <label>ราคา: </label>
+                    <label>*ราคา: </label>
                     <input type="number" name="price" class="form-control" placeholder="ราคา..." required> <br>
-                    <label>จำนวน: </label>
-                    <input type="number" name="amount" class="form-control" placeholder="จำนวน..." required> <br>
+                    <label>จำนวนเล่ม: </label>
+                    <input type="number" name="amount" class="form-control" placeholder="จำนวนหนังสือ..." required> <br>
                     <label>รูปภาพ: </label>
                     <input type="file" name="file1" required ><br> <br>
                     <label>รูปภาพหน้าหนังสือ: </label>
                     <input type="file" name="images[]" accept="image/*" multiple> <br> <br>
-                    <label>รายละเอียด: </label>
-                    <textarea type="text" name="detail" class="form-control" placeholder="รายละเอียด..." required> </textarea> <br>
+                    <label>*รายละเอียด: </label>
+                    <textarea type="text" name="detail" class="form-control" placeholder="รายละเอียด..." required></textarea> <br>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a class="btn btn-danger" href="addproduct.php" role="button">Cancel</a>
+                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                    <a class="btn btn-danger" href="addproduct.php" role="button">ยกเลิก</a>
                 </form>                               
                             </div>
                         </div>

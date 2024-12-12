@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 include 'config.php';
 //$conn = mysqli_connect("localhost","root","","dbfinal");
 
-$sqlQuery = "SELECT * FROM product ORDER BY id_pro ";
+$sqlQuery = "SELECT * FROM product WHERE status_pro='1' ORDER BY id_pro ";
 
 $result = mysqli_query($conn,$sqlQuery);
 

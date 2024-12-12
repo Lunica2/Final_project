@@ -5,7 +5,6 @@ $id=$_POST['id'];
 $bank=$_POST['bank'];
 $bank_number=$_POST['bank_number'];
 
-//แก้ไขข้อมูล
 $sql="UPDATE payment_methods SET
 bank='$bank',
 bank_number='$bank_number'

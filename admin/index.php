@@ -6,26 +6,6 @@ $ids=$_SESSION["ad_id"];
 
 if(!isset($_SESSION["admin"]))
 header("location:login.php");
-
-//ยังไม่ชำระ
-$sql1="SELECT COUNT(order_id) AS order_no from tb_order WHERE order_status='1' ";
-$hand=mysqli_query($conn,$sql1);
-$row1=mysqli_fetch_array($hand);
-
-//ชำระแล้ว
-$sql2="SELECT COUNT(order_id) AS order_yes from tb_order WHERE order_status='2' ";
-$hand2=mysqli_query($conn,$sql2);
-$row2=mysqli_fetch_array($hand2);
-
-//ยกเลิกการสั่งซื้อ
-$sql0="SELECT COUNT(order_id) AS order_cancle from tb_order WHERE order_status='0' ";
-$hand0=mysqli_query($conn,$sql0);
-$row0=mysqli_fetch_array($hand0);
-
-//สินค้าที่ต่ำกว่า 10
-$sql4="SELECT COUNT(id_pro) AS pro_num from product WHERE amount < 10 ";
-$hand4=mysqli_query($conn,$sql4);
-$row4=mysqli_fetch_array($hand4);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,7 +35,7 @@ $row4=mysqli_fetch_array($hand4);
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">รายการสั่งซื้อ (ยังไม่ชำระเงิน) <h4>[<?=$row1['order_no']?>]</h4></div>
+                                <div class="card-body"><h4>รายการสั่งซื้อ</h4></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="report_order.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -64,7 +44,7 @@ $row4=mysqli_fetch_array($hand4);
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">รายการสั่งซื้อ (ชำระเงินแล้ว) <h4>[<?=$row2['order_yes']?>]</h4></div>
+                                <div class="card-body"><h4>รายการสั่งซื้อ(ชำระเงินแล้ว)</h4></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="report_order_yes.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
@@ -73,44 +53,27 @@ $row4=mysqli_fetch_array($hand4);
                             </div>
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">รายการสั่งซื้อ (ยกเลิก) <h4>[<?=$row0['order_cancle']?>]</h4></div>
+                                <div class="card-body"><h4>รายการสั่งซื้อ (ยกเลิก)</h4></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         <a class="small text-white stretched-link" href="report_order_no.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">รายการสินค้าที่น้อยกว่า 10 ชิ้น <h4>[<?=$row4['pro_num']?>]</h4></div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="product_stock_less_10.php">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        จำนวนสินค้าคงเหลือ
-                                    </div>
-                                    <div class="card-body"><canvas id="graphCanvas" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
+                        <div class="row justify-content-center align-items-center">
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-area me-1"></i>
+                    จำนวนสินค้าคงเหลือ
+                </div>
+                <div class="card-body">
+                    <canvas id="graphCanvas" width="100%" height="40"></canvas>
+                </div>
+            </div>
+        </div>
 
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        ยอดเงินในแต่ละเดือน
-                                    </div>
-                                    <div class="card-body"><canvas id="graphCanvas1" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
@@ -149,8 +112,8 @@ $row4=mysqli_fetch_array($hand4);
                                             <td><?=$row['name_pro']?></td>
                                             <td><?=$row['detail_pro']?></td>
                                             <td><?=$row['name_type']?></td>
-                                            <td><?=$row['price_pro']?></td>
-                                            <td><?=$row['amount']?></td>
+                                            <td><?=$row['price_pro']?> บาท</td>
+                                            <td><?=$row['amount']?> เล่ม</td>
                                         </tr>
                                         <?php
                                         }
@@ -222,52 +185,6 @@ $row4=mysqli_fetch_array($hand4);
 
                     var barGraph = new Chart(graphTarget, {
                         type: 'bar',
-                        data: chartdata
-                    });
-                });
-            }
-        }
-        </script>
-<!-- ยอดขายแต่ละเดือน -->
-<script>
-        $(document).ready(function () {
-            showGraph1();
-        });
-
-
-        function showGraph1()
-        {
-            {
-                $.post("data_sale.php",
-                function (data)
-                {
-                    console.log(data);
-                     var name = [];
-                    var marks = [];
-
-                    for (var i in data) {
-                        name.push(data[i].dateMonth);
-                        marks.push(data[i].sumtotal);
-                    }
-
-                    var chartdata = {
-                        labels: name,
-                        datasets: [
-                            {
-                                label: 'ยอดรวมแต่ละเดือน',
-                                backgroundColor: '#0CFF00',
-                                borderColor: '#46d5f1',
-                                hoverBackgroundColor: '#CCCCCC',
-                                hoverBorderColor: '#666666',
-                                data: marks
-                            }
-                        ]
-                    };
-
-                    var graphTarget = $("#graphCanvas1");
-
-                    var barGraph = new Chart(graphTarget, {
-                        type: 'line',
                         data: chartdata
                     });
                 });

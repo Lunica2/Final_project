@@ -21,7 +21,7 @@ $image_pro=$row1['photo_pro'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>รายงานการขออนุญาติขายสินค้า</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -90,8 +90,8 @@ $status = $row['status_pro'];
                                             <td><?=$row['name']?></td>
                                             <td><?=$row['id_pro']?></td>
                                             <td><?=$row['name_pro']?></td>
-                                            <td><?=$row['price_pro']?></td>
-                                            <td><?=$row['amount']?></td>
+                                            <td><?=$row['price_pro']?> บาท</td>
+                                            <td><?=$row['amount']?> เล่ม</td>
                                             <td><?=$row['detail_pro']?></td>
                                             <td><?=$row['name_type']?></td>
                                             <td>

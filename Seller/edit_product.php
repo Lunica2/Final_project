@@ -75,8 +75,8 @@ $Ptype_id=$row1['id_type'];
                     <label>รายละเอียด: </label>
                     <textarea name="detail" class="form-control" ><?=$row1['detail_pro']?></textarea> <br>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a class="btn btn-danger" href="stock_product.php" role="button">Cancel</a>
+                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                    <a class="btn btn-danger" href="stock_product.php" role="button">ยกเลิก</a>
                 </form>
                                 
                             </div>

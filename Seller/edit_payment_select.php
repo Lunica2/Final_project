@@ -37,15 +37,15 @@ body{
             };
         };
         ?>
-        <input type="text" name="id" class="form-control text-center" readonly value=<?=$row1['id_payment']?>>
+        <input type="text" name="id" class="form-control text-center" hidden readonly value=<?=$row1['id_payment']?>>
         <label class="mt-1">ธนาคาร</label>
         <input type="text" name="bank" class="form-control" value=<?=$row1['bank']?>>
         <label class="mt-1">เลขที่บัญชี</label>
         <input type="text" name="bank_number" class="form-control" value=<?=$row1['bank_number']?>>
 <br>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <a class="btn btn-danger" href="editpay_ment.php" role="button">Cancel</a>
+        <button type="submit" class="btn btn-primary">ยืนยัน</button>
+        <a class="btn btn-danger" href="editpay_ment.php" role="button">ยกเลิก</a>
     </form>
 </body>
 </html>

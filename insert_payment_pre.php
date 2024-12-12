@@ -1,5 +1,6 @@
 <?php
 include 'config.php';
+session_start();
 $orderID=$_POST['order_id'];
 $totalPrice=$_POST['total_price'];
 $payDate=$_POST['pay_date'];
@@ -28,7 +29,7 @@ if($hand){
          title: "เสร็จสิ้น",
          type: "success"
      }, function() {
-         window.location = "payment_pre.php"; //หน้าที่ต้องการให้กระโดดไป
+         window.location = "report_pre_order.php"; //หน้าที่ต้องการให้กระโดดไป
      });
  }, 1000);
 </script>';
@@ -43,12 +44,12 @@ if($hand){
          title: "ไม่สามารถเพิ่มได้",
          type: "error"
      }, function() {
-         window.location = "payment_pre.php"; //หน้าที่ต้องการให้กระโดดไป
+         window.location = "report_pre_order.php"; //หน้าที่ต้องการให้กระโดดไป
      });
  }, 1000);
 </script>';
 }
-$sql1="UPDATE pre_order SET pre_status = 3 WHERE id_pre='$orderID' ";
+$sql1="UPDATE pre_order SET pre_status = 2 WHERE id_pre='$orderID' ";
 $result=mysqli_query($conn,$sql1);
 if($result){
     echo '<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
@@ -61,7 +62,7 @@ if($result){
          title: "เสร็จสิ้น",
          type: "success"
      }, function() {
-         window.location = "payment_pre.php"; //หน้าที่ต้องการให้กระโดดไป
+         window.location = "report_pre_order.php"; //หน้าที่ต้องการให้กระโดดไป
      });
  }, 1000);
 </script>';
@@ -76,20 +77,18 @@ if($result){
          title: "ไม่สามารถเพิ่มได้",
          type: "error"
      }, function() {
-         window.location = "payment_pre.php"; //หน้าที่ต้องการให้กระโดดไป
+         window.location = "report_pre_order.php"; //หน้าที่ต้องการให้กระโดดไป
      });
  }, 1000);
 </script>';
 }
-// รับค่าช่องทางการชำระเงินที่ถูกเลือก
+
 $payment_method_id = $_POST['payment_method'];
 
-// คุณสามารถบันทึกข้อมูลการสั่งซื้อพร้อมกับช่องทางการชำระเงินที่เลือกไว้ในฐานข้อมูลได้ตามที่ต้องการ
 $sql = "UPDATE payment_pre SET payment_method_id='$payment_method_id' WHERE id_pre='$orderID' ";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Order placed successfully!";
-    echo '<script> window.location = "payment_pre.php"; </script>';
+    echo '<script> window.location = "report_pre_order.php"; </script>';
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }

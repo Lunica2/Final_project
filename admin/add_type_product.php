@@ -35,8 +35,8 @@ include 'config.php';
                             <form name="form1" method="post" action="insert_type_product.php" enctype="multipart/form-data">
                     <label>ประเภทสินค้า: </label>
                     <input type="text" name="tname" class="form-control" placeholder="ประเภทสินค้า..." require> <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a class="btn btn-danger" href="add_type_product.php" role="button">Cancel</a>
+                    <button type="submit" class="btn btn-primary">เพิ่ม</button>
+                    <a class="btn btn-danger" href="add_type_product.php" role="button">ยกเลิก</a>
                 </form>
                 <div class="card-body">
                                 <table id="datatablesSimple" class="table table-striped">

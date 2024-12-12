@@ -15,9 +15,9 @@ if($row > 0){
     $_SESSION["bu_id"]=$row['id_member'];
     $_SESSION["bu_name"]=$row['name'];
     $_SESSION["bu_telephone"]=$row['telephone'];
+    $_SESSION["bu_type"]=$row['user_type'];
 
     $_SESSION["Error"] ="";
-        //$show=header("location:index.php");
         echo "<script> window.location='index.php'; </script>" ;
         $_SESSION['Error'] ="";
 }else{

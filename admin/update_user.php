@@ -10,7 +10,6 @@ $tel=$_POST['tel'];
 $type=$_POST['user_type'];
 
 
-//แก้ไขข้อมูล
 $sql="UPDATE user_form SET
 username='$username',
 name='$uname',

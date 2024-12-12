@@ -19,7 +19,7 @@ $Utype_id=$row1['user_type'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>แก้ไขข้อมูล</title>
         <link rel="stylesheet" href="style/style_register.css">
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
@@ -47,22 +47,22 @@ $Utype_id=$row1['user_type'];
                             <form name="form1" method="post" action="update_user.php" enctype="multipart/form-data">
                     <label>ID: </label>
                     <input type="text" name="uid" class="form-control" readonly value=<?=$row1['id_member']?>> <br>
-                    <label>Username: </label>
+                    <label>ชื่อผู้ใช้งาน: </label>
                     <textarea name="username" class="form-control" ><?=$row1['username']?></textarea> <br>
-                    <label>Name: </label>
+                    <label>ชื่อ: </label>
                     <textarea name="uname" class="form-control" ><?=$row1['name']?></textarea> <br>
-                    <label>Email: </label>
+                    <label>อีเมล: </label>
                     <input type="text" name="email" class="form-control" readonly value=<?=$row1['email']?>> <br>
-                    <label>Telephone: </label>
+                    <label>เบอร์โทรศัพท์: </label>
                     <input name="tel" class="form-control" value=<?=$row1['telephone']?> > <br>
-                    <label>Type: </label>
+                    <label>ประเภทผู้ใช้งาน: </label>
                     <select name="user_type">
         <option value="Buyer">Buyer</option>
         <option value="Seller">Seller</option>
         </select>
         <br><br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a class="btn btn-danger" href="edit_user.php" role="button">Cancel</a>
+                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                    <a class="btn btn-danger" href="edit_user.php" role="button">ยกเลิก</a>
                 </form>
                             </div>
                         </div>

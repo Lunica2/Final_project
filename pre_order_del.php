@@ -3,11 +3,11 @@ ob_start();
 session_start();
 include 'config.php';
 
-if(!isset($_SESSION["intLine"]))    //เช็คว่าแถวเป็นค่าว่างมั๊ย ถ้าว่างให้ทำงานใน {}
+if(!isset($_SESSION["intLine"]))
 {
 	 $_SESSION["intLine"] = 0;
-	 $_SESSION["strProductID"][0] = $_GET["id"];   //รหัสสินค้า
-	 $_SESSION["strQty"][0] = 1;                   //จำนวนสินค้า
+	 $_SESSION["strProductID"][0] = $_GET["id"];
+	 $_SESSION["strQty"][0] = 1;  
 	 header("location:cart_pre_order.php");
 }
 else

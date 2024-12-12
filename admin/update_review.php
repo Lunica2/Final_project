@@ -5,7 +5,6 @@ $id=$_POST['rid'];
 $rate=$_POST['rrate'];
 $detail=$_POST['rdetail'];
 
-//แก้ไขข้อมูล
 $sql="UPDATE review_table SET
 user_rating='$rate',
 user_review='$detail'

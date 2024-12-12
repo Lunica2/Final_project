@@ -4,18 +4,16 @@ session_start();
 if(!isset($_SESSION["bu_username"]))
 header("location:login.php");
 
-// ตรวจสอบการเชื่อมต่อ
 if ($conn->connect_error) {
     die("การเชื่อมต่อล้มเหลว: " . $conn->connect_error);
 }
 
-// รับคำค้นหาจากฟอร์ม
 $search_query = '';
 if (isset($_POST['search'])) {
     $search_query = $_POST['search'];
 }
 
-// ดึงข้อมูลหนังสือและราคาจากฐานข้อมูลโดยใช้ Full Text Search
+// ข้อมูลหนังสือและราคาจากฐานข้อมูลโดย Full Text Search
 $sql = "SELECT product.name_pro, user_form.username, product.id_pro AS name_pro, product.price_pro,id_pro
         FROM product
         JOIN user_form ON product.id_user = user_form.id_member
@@ -52,7 +50,7 @@ $conn->close();
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #d3d5d0 0%, #fad0c4 100%);
         }
         .container {
             max-width: 1200px;
@@ -111,7 +109,7 @@ $conn->close();
                         <tr>
                             <th>ร้านค้า</th>
                             <th>ราคา (บาท)</th>
-                            <th>ดูสินค้า</th>
+                            <th>สั่งซื้อสินค้า</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -120,7 +118,7 @@ $conn->close();
                             <tr>
                                 <td><?php echo htmlspecialchars($store['store']); ?></td>
                                 <td><?php echo number_format($store['price'], 2); ?></td>
-                                <td><a class="btn btn-outline-success mt-2" href="detail_product.php?id=<?=$store['id']?>">รายละเอียด</a></td>
+                                <td><a class="btn btn-outline-success mt-2" href="detail_product.php?id=<?=$store['id']?>">สั่งซื้อสินค้า</a></td>
                             </tr>
                             <?php endforeach; ?>
                         <?php endforeach; ?>

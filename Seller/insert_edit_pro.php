@@ -7,7 +7,6 @@ $uname=$_POST['uname'];
 $email=$_POST['email'];
 $tel=$_POST['tel'];
 
-//แก้ไขข้อมูล
 $sql="UPDATE user_form SET
 username='$username',
 name='$uname',

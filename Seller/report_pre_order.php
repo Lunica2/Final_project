@@ -1,6 +1,5 @@
 <?php
 include 'config.php';
-
 session_start();
 $ids=$_SESSION["se_id"];
 
@@ -33,7 +32,6 @@ header("location:login.php");
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
                                 แสดงข้อมูลการ Pre Order (ยังไม่ชำระเงิน)
-                                
                             <div>
                                 <br>
                             <a href="report_pre_order.php" > <button type="button" class="btn btn-secondary">ยังไม่ชำระเงิน</button> </a>
@@ -62,15 +60,16 @@ header("location:login.php");
                                 <table id="datatablesSimple" class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>เลขที่การ Pre Order</th>
-                                            <th>เลขที่ลุกค้า</th>
+                                        <th>ไอดี Pre Order</th>
+                                            <th>ชื่อสินค้า</th>
                                             <th>ชื่อลูกค้า</th>
                                             <th>ที่อยู่ - จัดส่ง</th>
+                                            <th>รหัสไปรษณีย์</th>
                                             <th>ราคารวมสุทธิ</th>
                                             <th>วันที่สั่งซื้อ</th>
                                             <th>สถานะ</th>
                                             <th>รายละเอียด</th>
-                                            <th>ปรับสถานะ</th>
+                                            <th>ยอมรับ</th>
                                             <th>ยกเลิก</th>
                                         </tr>
                                     </thead>
@@ -90,10 +89,10 @@ $add_date= date('Y/m/d', strtotime($ddt2 . "+1 days"));
 
 if(($ddt1 != "") & ($ddt2 != "")){
     echo "ค้นหาจากวันที่ $ddt1 ถึง $ddt2 " ;
-    $sql = "select * from pre_order po,user_form u ,pre_order_detail pod,product p where po.id_member=u.id_member and po.id_pre=pod.id_pre and pod.id_pro=p.id_pro and id_user='$ids' and pre_status='1' or pre_status='3' and time_pre BETWEEN '$ddt1' and '$add_date'
-    group by po.id_pre order by reg_date DESC";
+    $sql = "select * FROM pre_order t,pre_order_detail od,product p,user_form u WHERE t.id_pre=od.id_pre and od.id_pro=p.id_pro and t.id_member=u.id_member and id_user='$ids' and pre_status='1' or pre_status='3' and time_pre BETWEEN '$ddt1' and '$add_date'
+    GROUP BY t.id_pre order by time_pre DESC";
 }else{
-    $sql = "select * from pre_order po,user_form u ,pre_order_detail pod,product p where po.id_member=u.id_member and po.id_pre=pod.id_pre and pod.id_pro=p.id_pro and id_user='$ids' and pre_status='1' or pre_status='3' group by po.id_pre order by time_pre DESC";
+    $sql = "select * FROM pre_order t,pre_order_detail od,product p,user_form u WHERE t.id_pre=od.id_pre and od.id_pro=p.id_pro and t.id_member=u.id_member and id_user='$ids' and pre_status='1' or pre_status='3' GROUP BY t.id_pre order by time_pre DESC";
 }
 
 $result=mysqli_query($conn,$sql);
@@ -102,11 +101,12 @@ $status = $row['pre_status'];
 ?>
                                     
                                         <tr>
-                                            <td><?=$row['id_pre']?></td>
-                                            <td><?=$row['id_member']?></td>
+                                        <td><?=$row['id_pre']?></td>
+                                        <td><?=$row['name_pro']?></td>
                                             <td><?=$row['name']?></td>
                                             <td><?=$row['address']?></td>
-                                            <td><?=$row['total_price_pre']?></td>
+                                            <td><?=$row['pre_zip']?></td>
+                                            <td><?=$row['total_price_pre']?> บาท</td>
                                             <td><?=$row['time_pre']?></td>
                                             <td>
                                             <?php
@@ -117,13 +117,13 @@ $status = $row['pre_status'];
                                         }else if($status == 0){
                                             echo "<b style='color:red '> ยกเลิกการสั่งซื้อ </b> ";
                                         }else if($status == 3){
-                                            echo "<b style='color:blue '> รอตรวจสอบ </b> ";
+                                            echo "<b style='color:blue '> ยอมรับแล้ว </b> ";
                                         }
                                             ?>
 
                                             </td>
                                             <td><a href="report_pre_order_detail.php?id=<?=$row['id_pre']?>" class="btn btn-success">รายละเอียด</a></td>
-                                            <td><a href="pay_pre_order.php?id=<?=$row['id_pre']?>" class="btn btn-warning">ปรับสถานะ</a></td>
+                                            <td><a href="pay_pre_order.php?id=<?=$row['id_pre']?>" class="btn btn-warning">ยอมรับ</a></td>
                                             <td><a href="cancel_pre_order.php?id=<?=$row['id_pre']?>" class="btn btn-danger">ยกเลิก</a></td>
                                         </tr>
                                     

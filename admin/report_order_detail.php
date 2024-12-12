@@ -18,7 +18,7 @@ $image_bill=$row1['pay_image'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>รายงานคำสั่งซื้อ</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -48,6 +48,7 @@ $image_bill=$row1['pay_image'];
                                         <tr>
                                             <th>ชื่อลูกค้า</th>
                                             <th>รหัสสินค้า</th>
+                                            <th>รูปสินค้า</th>
                                             <th>ชื่อสินค้า</th>
                                             <th>ราคา</th>
                                             <th>จำนวน</th>
@@ -68,10 +69,11 @@ while($row=mysqli_fetch_array($result)){
                                         <tr>
                                             <td><?=$row['cus_name']?></td>
                                             <td><?=$row['id_pro']?></td>
+                                            <td><img src="../img/<?=$row['photo_pro']?>" width="100" height="100"></td>
                                             <td><?=$row['name_pro']?></td>
-                                            <td><?=$row['price_pro']?></td>
-                                            <td><?=$row['item_amount']?></td>
-                                            <td><?=$row['total']?></td>
+                                            <td><?=$row['price_pro']?> บาท</td>
+                                            <td><?=$row['item_amount']?> เล่ม</td>
+                                            <td><?=$row['total']?> บาท</td>
                                         
                                         </tr>
                                     

@@ -14,7 +14,7 @@ header("location:login.php");
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>แสดงรายการสินค้า</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -62,6 +62,7 @@ header("location:login.php");
                                         <tr>
                                             <th>รหัสสินค้า</th>
                                             <th>ชื่อสินค้า</th>
+                                            <th>รูปสินค้า</th>
                                             <th>ราคาสินค้า</th>
                                             <th>จำนวน</th>
                                             <th>ชื่อผู้ขาย</th>
@@ -86,8 +87,9 @@ $status = $row['status_pro'];
                                         <tr>
                                             <td><?=$row['id_pro']?></td>
                                             <td><?=$row['name_pro']?></td>
-                                            <td><?=$row['price_pro']?></td>
-                                            <td><?=$row['amount']?></td>
+                                            <td><img src="../img/<?=$row['photo_pro']?>" width="100" height="100"></td>
+                                            <td><?=$row['price_pro']?> บาท</td>
+                                            <td><?=$row['amount']?> เล่ม</td>
                                             <td><?=$row['name']?></td>
                                             <td>
                                             <?php

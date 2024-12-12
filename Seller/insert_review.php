@@ -55,8 +55,8 @@ $row1=mysqli_fetch_array($hand);
                     <input type="text" name="rdetail" class="form-control" value=<?=$row1['user_review']?>>
                     </select>
 <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a class="btn btn-danger" href="seller_edit_review.php" role="button">Cancel</a>
+                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                    <a class="btn btn-danger" href="seller_edit_review.php" role="button">ยกเลิก</a>
                 </form>
                             </div>
                         </div>

@@ -56,10 +56,9 @@ include 'config.php';
                                 <table id="datatablesSimple" class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>เลขที่การ Pre Order</th>
-                                            <th>เลขที่ลุกค้า</th>
                                             <th>ชื่อลูกค้า</th>
                                             <th>ที่อยู่ - จัดส่ง</th>
+                                            <th>รหัสไปรษณีย์</th>
                                             <th>ราคารวมสุทธิ</th>
                                             <th>วันที่สั่งซื้อ</th>
                                             <th>สถานะ</th>
@@ -82,10 +81,9 @@ $status = $row['pre_status'];
 ?>
                                     
                                         <tr>
-                                            <td><?=$row['id_pre']?></td>
-                                            <td><?=$row['id_member']?></td>
                                             <td><?=$row['name']?></td>
                                             <td><?=$row['address']?></td>
+                                            <td><?=$row['pre_zip']?></td>
                                             <td><?=$row['total_price_pre']?></td>
                                             <td><?=$row['time_pre']?></td>
                                             <td>

@@ -10,7 +10,6 @@ $id_user=$_POST['uid'];
 $add=$_POST['cus_add'];
 $zipcode=$_POST['zipcode'];
 
-//แก้ไขข้อมูล
 $sql = "INSERT INTO offer(id_pro,id_member,name_pro,price,amount_offer,discount,address,zipcode,offer_status) VALUES('$id_pro','$id_user','$name','$price','$amount','$discount'
 ,'$add','$zipcode','1')";
 $result=mysqli_query($conn,$sql);

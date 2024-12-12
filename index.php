@@ -29,19 +29,19 @@ while($row=mysqli_fetch_array($result)){
 $amount1=$row['amount'];
 $image1=$row['photo_pro'];
     ?>
-    <div class="col-sm-3">  
+    <div class="col-sm-3">
       <div class="text-center">
       <?php if($image1 == ""){ ?>
   <img src="img/no_image.png" width="200px" height="250" class="mt-5 p-2 my-2 border"> <br>
 <?php }else{ ?>
-  <img src="img/<?=$row['photo_pro']?>" width="200px" height="250" class="mt-5 p-2 my-2 border"> <br>
+  <img src="img/<?=$row['photo_pro']?>" width="200px" height="250" class="mt-5 p-2 my-2 border"> <br> <br>
 <?php }
   ?>
-      ID: <?=$row['id_pro']?> <br>
       <h6 class="text-success"><?=$row['name_pro']?></h6>
-      <h6 class="text-primary"><?=$row['name_type']?></h6>
+      <h6 class="text-primary">ประเภทสินค้า: <?=$row['name_type']?></h6>
       ราคา: <b class="text-danger"><?=$row['price_pro']?> </b> บาท <br>
-      จากร้าน: <b class="text-info"><?=$row['username']?> </b><br>
+      <p>มีจำนวน: <b class="text-danger"><?=$row['amount']?></b> เล่ม</p>
+      จากร้าน: <b class="text-info"><?=$row['name']?> </b><br>
 <?php
 if($amount1 <= 0){ ?>
   <a class="btn btn-danger mt-2 disabled" href="#">สินค้าหมด</a>

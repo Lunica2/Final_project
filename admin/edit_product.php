@@ -19,7 +19,7 @@ $Ptype_id=$row1['id_type'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>แก้ไขสินค้า</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -60,14 +60,12 @@ $Ptype_id=$row1['id_type'];
                         <?=$row['name_type']?></option>
                         <?php
                         }
-
                         ?>
-                    </select>
+                    </select> <br>
                     <label>ราคา: </label>
                     <input type="number" name="price" class="form-control" value=<?=$row1['price_pro']?>> <br>
                     <label>จำนวน: </label>
                     <input type="number" name="amount" class="form-control" value=<?=$row1['amount']?> > <br>
-                    
                     <img src="../img/<?=$row1['photo_pro']?>" width="100" height="100">
                     <label>รูปภาพ: </label>
                     <input type="file" name="file1" ><br> <br>
@@ -75,8 +73,8 @@ $Ptype_id=$row1['id_type'];
                     <label>รายละเอียด: </label>
                     <textarea name="detail" class="form-control" ><?=$row1['detail_pro']?></textarea> <br>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a class="btn btn-danger" href="stock_product.php" role="button">Cancel</a>
+                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                    <a class="btn btn-danger" href="stock_product.php" role="button">ยกเลิก</a>
                 </form>
                                 
                             </div>

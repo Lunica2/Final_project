@@ -71,13 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $targetFilePath = $uploadDir . $fileName;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-        // Check if file is an image
         $check = getimagesize($tmpName);
         if ($check !== false) {
             if (move_uploaded_file($tmpName, $targetFilePath)) {
                 $uploadedFiles[] = $fileName;
 
-                // Insert file information into database
                 $sql = "INSERT INTO product_images (file_name,id_member,id_pro) VALUES ('$fileName','$ids','$id_pro')";
                 if ($conn->query($sql) !== TRUE) {
                     $errors[] = "Error inserting file info into database: " . $conn->error;
@@ -89,23 +87,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $errors[] = "File is not an image: $fileName";
         }
     }
-
-    if (!empty($uploadedFiles)) {
-        echo "Files uploaded successfully:<br>";
-        foreach ($uploadedFiles as $file) {
-            echo "$file<br>";
-        }
-    }
-
-    if (!empty($errors)) {
-        echo "Errors occurred:<br>";
-        foreach ($errors as $error) {
-            echo "$error<br>";
-        }
-    }
-} else {
-    echo "No files uploaded.";
 }
-
 $conn->close();
 ?>

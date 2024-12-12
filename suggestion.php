@@ -2,6 +2,8 @@
 @include 'config.php';
 
 session_start();
+if(!isset($_SESSION["bu_username"]))
+header("location:login.php");
 ?>
 <!DOCTYPE html>
 <html lang="th">
@@ -9,6 +11,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>แนะนำหนังสือ</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style/style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script></head>
@@ -17,7 +21,6 @@ session_start();
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
         }
         header {
             background-color: #333;
@@ -58,10 +61,34 @@ session_start();
     <header>
         <h1>หนังสือแนะนำ</h1>
     </header>
-    <a href="index.php" class="btn btn-success">Back</a>
+    <a href="index.php" class="btn btn-success">Back</a> <br> <br>
+
+    <form  name="form1" method="POST" action="suggestion.php">
+<div hidden class="row">
+    <div class="col-sm-2">
+      <input type="date" name="dt1" class="form-control">
+    </div>
+    <div class="col-sm-2">
+    <input type="date" name="dt2" class="form-control">
+    </div>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+    </div>
+  </div>
+
     <div class="row">
     <?php
-$sql = "SELECT * FROM sell s,product p,type t,user_form u WHERE s.id_pro=p.id_pro and p.id_type=t.id_type and p.id_user=u.id_member and status_pro=1 ORDER BY sell_amount DESC";
+    $ddt1=@$_POST['dt1'];
+    $ddt2=@$_POST['dt2'];
+    $add_date= date('Y/m/d', strtotime($ddt2 . "+1 days"));
+    
+    if(($ddt1 != "") & ($ddt2 != "")){
+        echo "<h4>ค้นหาจากวันที่ $ddt1 ถึง $ddt2</h4> " ;
+        $sql = "SELECT * FROM sell s,product p,type t,user_form u WHERE s.id_pro=p.id_pro and p.id_type=t.id_type and p.id_user=u.id_member and status_pro=1 and sell_date BETWEEN '$ddt1' and '$add_date'
+        GROUP BY id_sell order by sell_date DESC";
+    }else{
+        $sql = "SELECT * FROM sell s,product p,type t,user_form u WHERE s.id_pro=p.id_pro and p.id_type=t.id_type and p.id_user=u.id_member and status_pro=1 and sell_amount >= 1 ORDER BY sell_amount DESC";
+    }
 $result = mysqli_query($conn,$sql);
 while($row=mysqli_fetch_array($result)){
 $amount1=$row['amount'];
@@ -114,3 +141,11 @@ if($amount1 <= 0){ ?>
                 </footer>
 </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+<script>

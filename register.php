@@ -21,12 +21,12 @@
             };
         };
         ?>
-        <input type="text" name="name" required placeholder="enter your name">
-        <input type="username" name="username" required placeholder="enter your username">
-        <input type="password" name="password" required placeholder="enter your password">
+        <input type="text" name="name" required placeholder="*enter your name">
+        <input type="username" name="username" required placeholder="*enter your username">
+        <input type="password" name="password" required placeholder="*enter your password">
         <input type="password" name="cpassword" required placeholder="confirm your password">
-        <input type="email" name="email" required placeholder="enter your email">
-        <input type="number" name="telephone" required placeholder="enter your telephone">
+        <input type="email" name="email" required placeholder="*enter your email">
+        <input type="number" name="telephone" required placeholder="*enter your telephone">
         <select name="user_type">
         <option value="Buyer">Buyer</option>
         </select>

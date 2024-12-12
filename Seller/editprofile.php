@@ -37,7 +37,7 @@ body{
             };
         };
         ?>
-        <input type="text" name="uid" class="form-control text-center" readonly value=<?=$row1['id']?>>
+        <input type="text" name="uid" class="form-control text-center" hidden readonly value="<?=$_SESSION["se_id"]?>">
         <label class="mt-1">UserName</label>
         <input type="text" name="username" class="form-control" value=<?=$row1['username']?>>
         <label class="mt-1">Name</label>
@@ -47,8 +47,8 @@ body{
         <label class="mt-1">Tel.</label>
         <input name="tel" class="form-control" value=<?=$row1['telephone']?> > <br>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <a class="btn btn-danger" href="index.php" role="button">Cancel</a>
+        <button type="submit" class="btn btn-primary">ยืนยัน</button>
+        <a class="btn btn-danger" href="index.php" role="button">ยกเลิก</a>
     </form>
 </body>
 </html>

@@ -60,16 +60,13 @@ header("location:login.php");
                                 <table id="datatablesSimple" class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>เลขที่การ Pre Order</th>
-                                            <th>เลขที่ลุกค้า</th>
                                             <th>ชื่อลูกค้า</th>
                                             <th>ที่อยู่ - จัดส่ง</th>
+                                            <th>รหัสไปรษณีย์</th>
                                             <th>ราคารวมสุทธิ</th>
                                             <th>วันที่สั่งซื้อ</th>
                                             <th>สถานะ</th>
                                             <th>รายละเอียด</th>
-                                            <th>ปรับสถานะ</th>
-                                            <th>ยกเลิก</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -100,11 +97,10 @@ $status = $row['pre_status'];
 ?>
                                     
                                         <tr>
-                                            <td><?=$row['id_pre']?></td>
-                                            <td><?=$row['id_member']?></td>
-                                            <td><?=$row['name']?></td>
+                                            <td><?=$row['pre_name']?></td>
                                             <td><?=$row['address']?></td>
-                                            <td><?=$row['total_price_pre']?></td>
+                                            <td><?=$row['pre_zip']?></td>
+                                            <td><?=$row['total_price_pre']?> บาท</td>
                                             <td><?=$row['time_pre']?></td>
                                             <td>
                                             <?php
@@ -115,14 +111,12 @@ $status = $row['pre_status'];
                                         }else if($status == 0){
                                             echo "<b style='color:red '> ยกเลิกการสั่งซื้อ </b> ";
                                         }else if($status == 3){
-                                            echo "<b style='color:blue '> รอตรวจสอบ </b> ";
+                                            echo "<b style='color:blue '> ยอมรับแล้ว </b> ";
                                         }
                                             ?>
 
                                             </td>
                                             <td><a href="report_pre_order_detail.php?id=<?=$row['id_pre']?>" class="btn btn-success">รายละเอียด</a></td>
-                                            <td><a href="pay_pre_order.php?id=<?=$row['id_pre']?>" class="btn btn-warning">ปรับสถานะ</a></td>
-                                            <td><a href="cancel_pre_order.php?id=<?=$row['id_pre']?>" class="btn btn-danger">ยกเลิก</a></td>
                                         </tr>
                                     
                                     <?php

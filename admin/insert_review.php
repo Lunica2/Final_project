@@ -18,7 +18,7 @@ $row1=mysqli_fetch_array($hand);
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>แก้ไขรีวิว</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -55,8 +55,8 @@ $row1=mysqli_fetch_array($hand);
                     <input type="text" name="rdetail" class="form-control" value=<?=$row1['user_review']?>> <br>
                     </select>
 <br>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <a class="btn btn-danger" href="edit_review.php" role="button">Cancel</a>
+                    <button type="submit" class="btn btn-primary">ยืนยัน</button>
+                    <a class="btn btn-danger" href="edit_review.php" role="button">ยกเลิก</a>
                 </form>
                             </div>
                         </div>

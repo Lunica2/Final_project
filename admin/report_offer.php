@@ -14,7 +14,7 @@ header("location:login.php");
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>รายงานการจัดข้อเสนอ</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -75,8 +75,8 @@ $id_offer = $row['id_offer'];
                                     
                                         <tr>
                                             <td><?=$row['name_pro']?></td>
-                                            <td><?=$row['price']?></td>
-                                            <td><?=$row['amount_offer']?></td>
+                                            <td><?=$row['price']?> บาท</td>
+                                            <td><?=$row['amount_offer']?> เล่ม</td>
                                             <td><?=$row['name']?></td>
                                             <td>
                                             <?php
@@ -89,7 +89,7 @@ $id_offer = $row['id_offer'];
                                         }
                                             ?>
                                             <td><?=$row['discount']?> %</td>
-                                            <td><?=$total-($total * $row['discount'])/100?></td>
+                                            <td><?=$total-($total * $row['discount'])/100?> บาท</td>
                                             <td><a href="allow_offer.php?id=<?=$row['id_offer']?>" class="btn btn-success">ยอมรับ</a></td>
                                             <td><a href="cancel_offer.php?id=<?=$row['id_offer']?>" class="btn btn-danger">ไม่ยอมรับ</a></td>
                                         </tr>

@@ -17,7 +17,7 @@ $image_bill=$row1['pay_image'];
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>report</title>
+        <title>รายงานคำสั่งซื้อ Pre Order</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -66,9 +66,9 @@ while($row=mysqli_fetch_array($result)){
                                         <tr>
                                             <td><?=$row['id_pro']?></td>
                                             <td><?=$row['name_pro']?></td>
-                                            <td><?=$row['price_pro']?></td>
-                                            <td><?=$row['item_amount']?></td>
-                                            <td><?=$row['total']?></td>
+                                            <td><?=$row['price_pro']?> บาท</td>
+                                            <td><?=$row['item_amount']?> เล่ม</td>
+                                            <td><?=$row['total']?> บาท</td>
                                         
                                         </tr>
                                     
@@ -79,7 +79,6 @@ while($row=mysqli_fetch_array($result)){
                                     
                                 </table>
                                 <b>ราคารวมสุทธิ <?=number_format($sum_total,2)?> บาท</b>
-                                <a href="print_pre_order.php?id=<?=$ids?>" > <button type="button" class="btn btn-success">ดูใบเสร็จ</button> </a>
                             </div>
                         </div>
                         <div>
